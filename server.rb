@@ -1,7 +1,7 @@
 require "sinatra"
 require "sinatra/json"
 require "./calculator_skill"
-require "clova-speech"
+require "clova"
 
 class Server < Sinatra::Base
   def self.clova
@@ -29,6 +29,7 @@ class Server < Sinatra::Base
   end
 
   post '/post' do
+    puts 'POSTSSS'
     #returns a ready-to-send JSON string of the Clova request
     clova.build_response(request)
   end

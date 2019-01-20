@@ -1,13 +1,13 @@
-require 'clova-speech'
+require 'clova'
 
 class CalculatorSkill < Clova::Skill
-    def handle_launch
+    def launch_request
     response.add_speech("数学しますか？")
     response.add_reprompt("待っています")
     response
     end
 
-  def handle_intent
+  def intent_request
     if request.session.session_attributes[:sum] != nil
       new_sum = request.find_slot_value_by(:num).to_i + request.session.session_attributes[:sum].to_i
       speech = "#{request.find_slot_value_by(:num)} + #{request.session.session_attributes[:sum]}　＝ #{new_sum}"
